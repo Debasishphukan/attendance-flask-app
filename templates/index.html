@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>LOOP - Attendance System</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='styles.css') }}"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <nav class="navbar">
+      <div class="navbar-content">
+        <h1 style="margin: 0; font-size: 1.5rem">LOOP</h1>
+        <div class="nav-links">
+          <a href="{{ url_for('register') }}">Register Student</a>
+          <a href="{{ url_for('attendance') }}">Take Attendance</a>
+          <a href="{{ url_for('view_attendance') }}">View Attendance</a>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container">
+      <div class="card">
+        <h1>Welcome to LOOP</h1>
+        <p style="color: var(--text-secondary); margin-bottom: 2rem">
+          A modern attendance management system for educational institutions.
+        </p>
+        <div
+          style="
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+          "
+        >
+          <div class="card" style="margin: 0">
+            <h2 style="font-size: 1.25rem; margin-bottom: 1rem">
+              Register Students
+            </h2>
+            <p style="color: var(--text-secondary); margin-bottom: 1rem">
+              Add new students to the system with their details and photos.
+            </p>
+            <a
+              href="{{ url_for('register') }}"
+              style="
+                display: inline-block;
+                padding: 0.75rem 1.5rem;
+                background-color: var(--primary-color);
+                color: white;
+                text-decoration: none;
+                border-radius: var(--border-radius);
+              "
+              >Get Started</a
+            >
+          </div>
+          <div class="card" style="margin: 0">
+            <h2 style="font-size: 1.25rem; margin-bottom: 1rem">
+              Take Attendance
+            </h2>
+            <p style="color: var(--text-secondary); margin-bottom: 1rem">
+              Mark attendance using face recognition technology.
+            </p>
+            <a
+              href="{{ url_for('attendance') }}"
+              style="
+                display: inline-block;
+                padding: 0.75rem 1.5rem;
+                background-color: var(--primary-color);
+                color: white;
+                text-decoration: none;
+                border-radius: var(--border-radius);
+              "
+              >Start Session</a
+            >
+          </div>
+          <div class="card" style="margin: 0">
+            <h2 style="font-size: 1.25rem; margin-bottom: 1rem">
+              View Records
+            </h2>
+            <p style="color: var(--text-secondary); margin-bottom: 1rem">
+              Access and analyze attendance records and reports.
+            </p>
+            <a
+              href="{{ url_for('view_attendance') }}"
+              style="
+                display: inline-block;
+                padding: 0.75rem 1.5rem;
+                background-color: var(--primary-color);
+                color: white;
+                text-decoration: none;
+                border-radius: var(--border-radius);
+              "
+              >View Reports</a
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
