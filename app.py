@@ -7,7 +7,7 @@ from datetime import datetime
 import time
 
 app = Flask(__name__)
-app.secret_key = "your_secret_key"
+app.secret_key = os.environ.get("SECRET_KEY", "default_secret_key")
 
 # Paths
 haarcascade_path = "haarcascade_frontalface_default.xml"
