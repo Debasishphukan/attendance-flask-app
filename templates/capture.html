@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Capture Photo</title>
+</head>
+<body>
+
+<h2>Capture Student Photo</h2>
+
+<video id="video" width="640" height="480" autoplay></video>
+<canvas id="canvas" width="640" height="480" style="display:none;"></canvas>
+
+<br>
+
+<form id="upload-form" method="POST" enctype="multipart/form-data" action="/upload_photo">
+    <input type="text" name="enrollment_no" placeholder="Enrollment Number" required><br><br>
+    <input type="text" name="student_name" placeholder="Student Name" required><br><br>
+    <input type="file" name="photo" id="photo-upload" style="display:none;">
+    <button type="button" onclick="capture()">Capture Photo</button><br><br>
+    <button type="submit">Upload Photo</button>
+</form>
+
+<script>
+    const video = document.getElementById('video');
+    const canvas = document.getElementById('canvas');
+    const photoUpload = document.getElementById('photo-upload');
+
+    navigator.mediaDevices.getUserMedia({ video: true })
+        .then(stream => {
+            video.srcObject = stream;
+        })
+        .catch(err => {
+            console.error("Error accessing webcam: ", err);
+        });
+
+    function capture() {
+        const context = canvas.getContext('2d');
+        context.drawImage(video, 0, 0, canvas.width, canvas.height);
+
+        canvas.toBlob(blob => {
+            const file = new File([blob], "capture.jpg", { type: "image/jpeg" });
+
+            const dataTransfer = new DataTransfer();
+            dataTransfer.items.add(file);
+            photoUpload.files = dataTransfer.files;
+            alert("Photo captured! Now click 'Upload Photo'");
+        }, 'image/jpeg');
+    }
+</script>
+
+</body>
+</html>
